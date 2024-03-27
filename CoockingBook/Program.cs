@@ -43,6 +43,8 @@ public class Program
                         Console.WriteLine($"{(int)enumCuisineType}. {enumCuisineType.ToString()}");
                     }
                     Console.WriteLine();
+                    Char cuisineTypeFromUser = CheckKey.CheckPressedKey("Yours choice: ", new char[] { '1', '2', '3', '4', '5', '6' });
+                    recipeService.AddNewRecipe(cuisineTypeFromUser);
                     break;
                 case '2':
                 case 'D':
@@ -55,21 +57,33 @@ public class Program
                     break;
                 case '3':
                 case 'S':
-                    Console.Clear();
-                    Console.WriteLine();
-                    Console.WriteLine("Showing a recipes list.");
-                    Console.WriteLine();
-                    recipeService.ShowRecipe();
-                    Console.WriteLine();
-                    Console.WriteLine("1. Show details of recipe - choose by recipe(I)D.");
-                    Console.WriteLine("2. Back to (M)ainMenu.");
-                    Console.WriteLine();
-                    Char keyFromUserSubMenu = CheckKey.CheckPressedKey(" Yours choice (D - details, M - Main Menu): ", new Char[] { 'D', 'M', '1', '2' });
-                    if (keyFromUserSubMenu == '1' || Char.ToUpper(keyFromUserSubMenu) == 'D')
+                    bool showSubMenuRun = true;
+                    while (showSubMenuRun)
                     {
-                        Console.WriteLine("enter ID: ");
-                        int recipeID = int.Parse(Console.ReadLine());
-                        recipeService.ShowRecipeDetail(recipeID);
+                        Console.WriteLine();
+                        Console.WriteLine("Recipes list.");
+                        Console.WriteLine();
+                        recipeService.ShowRecipe();
+                        Console.WriteLine();
+                        Console.WriteLine("1. Show details of recipe - choose by recipe(I)D.");
+                        Console.WriteLine("2. Back to (M)ainMenu.");
+                        Console.WriteLine();
+                        Char keyFromUserSubMenu = CheckKey.CheckPressedKey(" Yours choice (D - details, M - Main Menu): ", new Char[] { 'D', 'M', '1', '2' });
+                        if (keyFromUserSubMenu == '1' || Char.ToUpper(keyFromUserSubMenu) == 'D')
+                        {
+                            Console.WriteLine("enter ID: ");
+                            int recipeID = int.Parse(Console.ReadLine());
+                            Console.Clear();
+                            recipeService.ShowRecipeDetail(recipeID);
+                        }
+                        else if (keyFromUserSubMenu == '2' || Char.ToUpper(keyFromUserSubMenu) == 'M')
+                        {
+                            showSubMenuRun = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("choose D/M");
+                        }
                     }
                     break;
                 case '4':
