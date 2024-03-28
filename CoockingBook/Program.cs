@@ -53,7 +53,7 @@ public class Program
                     Console.WriteLine("Deleting a recipe.");
                     Console.WriteLine();
                     Console.Write("Enter recipe ID you want to delete: ");
-                    recipeService.DeleteRecipe(int.Parse(Console.ReadLine()));
+                    recipeService.DeleteRecipeById(int.Parse(Console.ReadLine()));
                     break;
                 case '3':
                 case 'S':
