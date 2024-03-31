@@ -77,18 +77,24 @@ namespace CoockingBook
 
         public void DeleteRecipeByName(string recipeTitleToRemove)
         {
-            List<Recipe> recipeToRemove = Recipes.FindAll(x => x.RecipeTitle.Contains("recipeNameToRemove"));
-            if (recipeToRemove != null)
+            List<Recipe> recipeToRemove = Recipes.FindAll(x => x.RecipeTitle.Contains(recipeTitleToRemove));
+            if (recipeToRemove.Count() > 0)
             {
+                Console.WriteLine($"Deleting {recipeToRemove.Count()} recipes: ");
                 foreach (Recipe i in recipeToRemove)
                 {
-                    Console.WriteLine($"Deleting recipe with RecipeId: {i.RecipeId} Name: {i.RecipeTitle}");
+                    Console.WriteLine($"RecipeId: {i.RecipeId} Name: {i.RecipeTitle}");
                     Recipes.Remove(i);
                 }
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                //Console.BackgroundColor = ConsoleColor.White;
+                Console.Beep();
                 Console.WriteLine($"Any recipe with Title contains the given phrase: \"{recipeTitleToRemove}\" not exist. ");
+                //Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
     }

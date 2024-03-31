@@ -8,23 +8,23 @@ namespace CoockingBook
 {
     public class CheckKey
     {
-        public static Char CheckPressedKey(string msg, Char[] properKeys)
+        public static Char CheckPressedKey(string message, Char[] properKeys)
         {
-            bool proper = true;
+            bool proper = false;
             ConsoleKeyInfo keyPressed;
 
             Console.WriteLine();
 
             do
             {
-                Console.Write(msg);
+                Console.Write(message);
                 keyPressed = Console.ReadKey();
                 if (Array.Exists(properKeys, ch => ch.Equals(Char.ToUpper(keyPressed.KeyChar))))
                 {
-                    proper = false;
+                    proper = true;
                 }
                 Console.WriteLine("");
-            } while (proper);
+            } while (!proper);
 
             return keyPressed.KeyChar;
         }

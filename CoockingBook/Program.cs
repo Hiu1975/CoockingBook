@@ -27,6 +27,7 @@ public class Program
             Console.WriteLine();
 
             Char keyFromUser = CheckKey.CheckPressedKey(" Yours choice: ", new Char[] { 'A', 'D', 'S', 'Q', '1', '2', '3', '4' });
+            bool showSubMenuRun = true;
 
             switch (Char.ToUpper(keyFromUser))
             {
@@ -48,16 +49,45 @@ public class Program
                     break;
                 case '2':
                 case 'D':
-                    Console.Clear();
-                    Console.WriteLine();
-                    Console.WriteLine("Deleting a recipe.");
-                    Console.WriteLine();
-                    Console.Write("Enter recipe ID you want to delete: ");
-                    recipeService.DeleteRecipeById(int.Parse(Console.ReadLine()));
+                    showSubMenuRun = true;
+                    while (showSubMenuRun)
+                    {
+                       // Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Recipes list.");
+                        Console.WriteLine();
+                        recipeService.ShowRecipe();
+                        Console.WriteLine();
+                        Console.WriteLine("1. Delete - by recipe (I)D.");
+                        Console.WriteLine("2. Delete - by recipe (T)itle.");
+                        Console.WriteLine("3. Back to (M)ainMenu.");
+                        Console.WriteLine();
+                        Char keyFromUserSubMenu = CheckKey.CheckPressedKey(" Yours choice: ", new Char[] { 'I', 'T', 'M', '1', '2', '3' });
+                        if (keyFromUserSubMenu == '1' || Char.ToUpper(keyFromUserSubMenu) == 'I')
+                        {
+                            Console.Write("Enter recipe ID you want to delete: ");
+                            recipeService.DeleteRecipeById(int.Parse(Console.ReadLine()));
+                        }
+                        else if (keyFromUserSubMenu == '2' || Char.ToUpper(keyFromUserSubMenu) == 'T')
+                        {
+                            Console.Write("Enter the title of the recipe (or part of title) you want to remove: ");
+                            recipeService.DeleteRecipeByName(Console.ReadLine());
+                        }
+                        else if (keyFromUserSubMenu == '3' || Char.ToUpper(keyFromUserSubMenu) == 'M')
+                        {
+                            Console.Clear();
+                            showSubMenuRun = false;
+                        }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("choose (I/T/M): ");
+                        }
+                    }
                     break;
                 case '3':
                 case 'S':
-                    bool showSubMenuRun = true;
+                    showSubMenuRun = true;
                     while (showSubMenuRun)
                     {
                         Console.WriteLine();
@@ -65,24 +95,26 @@ public class Program
                         Console.WriteLine();
                         recipeService.ShowRecipe();
                         Console.WriteLine();
-                        Console.WriteLine("1. Show details of recipe - choose by recipe(I)D.");
+                        Console.WriteLine("1. Show (D)etails of recipe - by recipe Id.");
                         Console.WriteLine("2. Back to (M)ainMenu.");
                         Console.WriteLine();
                         Char keyFromUserSubMenu = CheckKey.CheckPressedKey(" Yours choice (D - details, M - Main Menu): ", new Char[] { 'D', 'M', '1', '2' });
                         if (keyFromUserSubMenu == '1' || Char.ToUpper(keyFromUserSubMenu) == 'D')
                         {
-                            Console.WriteLine("enter ID: ");
+                            Console.Write("Enter recipe ID to see all details: ");
                             int recipeID = int.Parse(Console.ReadLine());
                             Console.Clear();
                             recipeService.ShowRecipeDetail(recipeID);
                         }
                         else if (keyFromUserSubMenu == '2' || Char.ToUpper(keyFromUserSubMenu) == 'M')
                         {
+                            Console.Clear();
                             showSubMenuRun = false;
                         }
                         else
                         {
-                            Console.WriteLine("choose D/M");
+                            Console.Beep();
+                            Console.WriteLine("choose (D/M): ");
                         }
                     }
                     break;
