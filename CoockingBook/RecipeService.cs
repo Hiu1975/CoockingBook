@@ -43,7 +43,7 @@ namespace CoockingBook
         {
             foreach (var i in Recipes)
             {
-                Console.WriteLine($"ID: {i.RecipeId} | Title: {i.RecipeTitle} | ");
+                Console.WriteLine($"|ID: {i.RecipeId}   |Title: {i.RecipeTitle}");
             }
         }
 
@@ -90,10 +90,10 @@ namespace CoockingBook
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                //Console.BackgroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.White;
                 Console.Beep();
                 Console.WriteLine($"Any recipe with Title contains the given phrase: \"{recipeTitleToRemove}\" not exist. ");
-                //Console.BackgroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }

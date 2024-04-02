@@ -1,7 +1,12 @@
-﻿// 5. Wyświetlenie przepisu po nazwie, składniku
-// 6. Wyświetlenie przpisów według filtru, np.Id typu kuchnii, dania
+﻿// 5. Wyświetlenie detali przepisu po
+//    c. składniku
+// 6. Wyświetlenie przpisów według filtru:
+//    a. typ kuchnii
+//    b. tytulach
+//    c. składnikach
 // 7. Edycja przepisu.
 // 8. Walidacja danych.
+// 9. Estetyka wyświetlania danych.
 
 namespace CoockingBook;
 
