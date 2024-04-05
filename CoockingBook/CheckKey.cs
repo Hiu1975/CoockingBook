@@ -10,7 +10,7 @@ namespace CoockingBook
     {
         public static Char CheckPressedKey(string message, Char[] properKeys)
         {
-            bool proper = false;
+            bool isProper = false;
             ConsoleKeyInfo keyPressed;
 
             Console.WriteLine();
@@ -21,10 +21,10 @@ namespace CoockingBook
                 keyPressed = Console.ReadKey();
                 if (Array.Exists(properKeys, ch => ch.Equals(Char.ToUpper(keyPressed.KeyChar))))
                 {
-                    proper = true;
+                    isProper = true;
                 }
                 Console.WriteLine("");
-            } while (!proper);
+            } while (!isProper);
 
             return keyPressed.KeyChar;
         }
