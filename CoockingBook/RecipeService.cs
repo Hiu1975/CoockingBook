@@ -18,10 +18,10 @@ namespace CoockingBook
         public void CreateStartingList()
         {
             Recipes.Add(new Recipe() { RecipeId = highestId++, CuisineType = "1", RecipeTitle = "Butter chicken", RecipeDescription = "Chicken curry masala", RecipeIngredients = "chicken, onion, potato, cream, garlic, ginger, indian spices" });
-            Recipes.Add(new Recipe() { RecipeId = highestId++, CuisineType = "1", RecipeTitle = "Naan garlic", RecipeDescription = "Prawn curry coconut", RecipeIngredients = "prawn, coconut" });
+            Recipes.Add(new Recipe() { RecipeId = highestId++, CuisineType = "1", RecipeTitle = "Naan garlic", RecipeDescription = "Naan bread with garlic butter", RecipeIngredients = "prawn, coconut" });
             Recipes.Add(new Recipe() { RecipeId = highestId++, CuisineType = "1", RecipeTitle = "Curry Prawn", RecipeDescription = "Prawn curry", RecipeIngredients = "prawn, chilli, garlic" });
             string descriptions = "Dosa is a popular South Indian thin crepe made with fermented rice and lentil batter. Usually served with chutney. <Coconut Chutney>, <Tomato Chutney>, <Potato Masala>.\r\n\r\n" +
-                "Making dosa starts by soaking rice and black gram, later they are ground to a batter which is fermented overnight. This batter is spread like a crepe ona hot griddle.";
+                "Making dosa starts by soaking rice and black gram, later they are ground to a batter which is fermented overnight. This batter is spread like a crepe on a hot griddle.";
             Recipes.Add(new Recipe() { RecipeId = highestId++, CuisineType = "1", RecipeTitle = "Dosa with onion and potato", RecipeDescription = descriptions, RecipeIngredients = "fermented rice, flour, onion, potato" });
         }
         public void AddNewRecipe(char cuisineTypeFromUser)
