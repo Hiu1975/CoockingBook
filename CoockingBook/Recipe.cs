@@ -9,7 +9,7 @@ namespace CoockingBook
     public class Recipe
     {
         private int _recipeId;
-        public int RecipeId { get { return _recipeId; } set { _recipeId = value + 1; } }
+        public int RecipeId { get; set; }
         public string RecipeTitle { get; set; }
         public string RecipeDescription { get; set; }
         public string CuisineType { get; set; }

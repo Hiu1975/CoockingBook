@@ -26,10 +26,10 @@ namespace CoockingBook
         }
         public void AddNewRecipe(char cuisineTypeFromUser)
         {
-            highestId = Recipes.Any() ? Recipes.Max(x => x.RecipeId) : 1;
+            highestId = Recipes.Any() ? Recipes.Max(x => x.RecipeId) : 1000;
             Recipe recipe = new Recipe();
             recipe.CuisineType = cuisineTypeFromUser.ToString();
-            recipe.RecipeId = highestId++;
+            recipe.RecipeId = ++highestId;
             Console.Write("Title= ");
             recipe.RecipeTitle = Console.ReadLine();
             Console.Write("Desc= ");
